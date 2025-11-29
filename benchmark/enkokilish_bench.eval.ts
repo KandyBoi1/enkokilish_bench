@@ -1,23 +1,26 @@
-import { generateText } from "ai";
-import { google } from "@ai-sdk/google";
 import { evalite } from "evalite";
-import { wrapAISDKModel } from "evalite/ai-sdk";
+import { generateText } from "ai";
+// import { google } from "@ai-sdk/google"; // OPTIONAL
+// import { wrapAISDKModel } from "evalite/ai-sdk"; // OPTIONAL
 import { contains } from "evalite/scorers/deterministic";
-import { enkokilish_dataset } from "./datasets/enkokilish";
+import { enkokilish_dataset } from "../datasets/enkokilish";
+import { systemPrompt } from "../system_prompt/system_prompt";
 
 // Import Datase
 const dataset = enkokilish_dataset;
 
 // Wrap once, use everywhere
-const model = wrapAISDKModel(google("gemini-2.5-flash-lite"));
+const model = "google/gemini-2.5-flash";
+// const model = google("gemini-2.5-flash"); // Optionally use a provider
+// const model = wrapAISDKModel(google("gemini-2.5-flash-lite")); // Wrap to get traces
 
 // Benchmark
 evalite("Enkokilish Bench", {
   data: async () => dataset,
   task: async (input) => {
     const result = await generateText({
-      model,
-      system: `You are an Amharic riddle solver. Try your best to solve every riddle you are asked. Respond with one word or phrase only!`,
+      model: model,
+      system: systemPrompt,
       prompt: input,
     });
 
