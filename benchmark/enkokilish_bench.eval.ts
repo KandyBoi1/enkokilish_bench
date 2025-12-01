@@ -6,7 +6,7 @@ import { reportTrace } from "evalite/traces";
 import { modelsToBenchmark } from "../eval_config/models_to_benchmark";
 import { systemPrompt } from "../eval_config/system_prompt";
 
-// Import Datase
+// Import Dataset
 const dataset = enkokilish_dataset;
 
 // Benchmark
