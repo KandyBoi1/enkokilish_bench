@@ -1,5 +1,7 @@
 # Enkokilish Bench
 
+![screenshot](./screenshot.png)
+
 This is a new benchmark for LLMs focused on evaluating an LLMs ability to understand, reason and solve Amharic riddles. 
 
 I used [Evalite](evalite.dev) as the evals framework. It's typesafe, open-source and can scale to thousands of evals. It also integrates well with [AI-SDK](ai-sdk.dev) which I've used to make calls to LLMs. 
