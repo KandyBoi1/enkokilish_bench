@@ -21,26 +21,34 @@
 	);
 </script>
 
-<div class="w-fit rounded-lg bg-neutral-100 border overflow-clip mt-10 mb-6">
+<div class="w-full rounded-lg bg-neutral-100 border overflow-clip mt-10 mb-6">
 	<div class="bg-neutral-200 flex justify-between px-3 py-1 text-sm italic">
 		<div>Eval Summary</div>
 	</div>
-	<div class="px-3 py-1">
-		Total Models: {evalResults.length}
-	</div>
-	<div class="px-3 py-1 border-t">
-		Total Cost: ${totalCost}
-	</div>
-	<div class="px-3 py-1 border-t">
-		Total Duration: {totalDuration} ms
-	</div>
-	<div class="px-3 py-1 border-t">
-		Total Input Tokens: {totalInTok}
-	</div>
-	<div class="px-3 py-1 border-t">
-		Total Output Tokens: {totalOutTok}
-	</div>
-	<div class="px-3 py-1 border-t">
-		Total Tokens: {totalTok}
+	<div class="flex flex-col md:flex-row justify-between">
+		<div>
+			<div class="px-3 py-1">
+				Total Models: {evalResults.length}
+			</div>
+			<div class="px-3 py-1 border-t">
+				Total Cost: ${totalCost}
+			</div>
+		</div>
+		<div>
+			<div class="px-3 py-1 border-t">
+				Total Duration: {totalDuration} ms
+			</div>
+			<div class="px-3 py-1 border-t">
+				Total Input Tokens: {totalInTok}
+			</div>
+		</div>
+		<div>
+			<div class="px-3 py-1 border-t">
+				Total Output Tokens: {totalOutTok}
+			</div>
+			<div class="px-3 py-1 border-t">
+				Total Tokens: {totalTok}
+			</div>
+		</div>
 	</div>
 </div>
