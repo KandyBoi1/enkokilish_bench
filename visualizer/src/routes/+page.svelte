@@ -1,5 +1,5 @@
 <script lang="ts">
-	import result from '$lib/results/result-1765050648303.json';
+	import result from '$lib/results/result-1765065761887.json';
 	import Date from '../components/date.svelte';
 	import FailGraph from '../components/fail_graph.svelte';
 	import Header from '../components/header.svelte';
@@ -7,9 +7,14 @@
 	import SuccessGraph from '../components/success_graph.svelte';
 	import TableOverview from '../components/table_overview.svelte';
 	import FailGraphMobile from '../components/fail_graph_mobile.svelte';
+	import EvalSummary from '../components/eval_summary.svelte';
+	// import SuccessFailGraph from '../components/success_fail_graph.svelte';
+
+	const formatter = new Intl.NumberFormat('en-US');
 
 	let evalResults: eachEvalResultType[] = [];
 	let evalResultsForGraphs: eachEvalResultType[] = [];
+	let evalResultsForTables: eachEvalResultType[] = [];
 
 	interface eachEvalResultType {
 		model: string;
@@ -22,7 +27,6 @@
 		successCount: number;
 		failCount: number;
 	}
-
 	function formatResult() {
 		for (const suit of result.suites) {
 			const eachEvalResult: eachEvalResultType = {
@@ -37,6 +41,7 @@
 				failCount: 0
 			};
 			for (const eachEval of suit.evals) {
+				// if (eachEval.output?.error) continue;
 				eachEvalResult.totalDuration = Number(eachEvalResult.totalDuration) + eachEval.duration;
 				if (eachEval.scores[0]) {
 					eachEvalResult.failCount += eachEval.scores[0].score == 0 ? 1 : 0;
@@ -58,8 +63,8 @@
 			evalResults.push(eachEvalResult);
 		}
 
-		const formatter = new Intl.NumberFormat('en-US');
-		evalResults = evalResults.map((item) => ({
+		evalResultsForTables = evalResults;
+		evalResultsForTables = evalResultsForTables.map((item) => ({
 			...item,
 			averageScore: Number(item.averageScore.toFixed(2)),
 			totalCost: Number(item.totalCost.toFixed(8)),
@@ -79,10 +84,14 @@
 	}
 
 	formatResult();
+
+	let systemPrompt =
+		result.suites?.[0]?.evals?.[0]?.output?.steps?.[0]?.request?.body?.prompt?.[0]?.content ||
+		'You are an Amharic riddle solver. Try your best to solve every riddle you are asked. Respond with one word or phrase only!';
 </script>
 
 <div class="h-screen">
-	<div class="w-[90vw] md:w-2/3 m-auto">
+	<div class="w-[90vw] md:w-2/3 m-auto pb-56">
 		<!-- Header -->
 		<Header time={result.run.createdAt} />
 
@@ -95,12 +104,12 @@
 				<div>System Prompt</div>
 			</div>
 			<div class="px-3 py-1">
-				{result.suites[0].evals[0].output!.steps[0].request.body.prompt[0].content}
+				{systemPrompt}
 			</div>
 		</div>
 
 		<!-- Table Overview -->
-		<TableOverview {evalResults} />
+		<TableOverview evalResults={evalResultsForTables} />
 
 		<!-- Succes vs Fail Rates -->
 		<div class="flex flex-col md:flex-row w-full gap-x-2 gap-y-4 md:gap-y-0">
@@ -124,6 +133,8 @@
 			</div>
 		</div>
 
-		<!-- <SuccessFailGraph {evalResultsForGraphs} /> -->
+		<!-- <SuccessFailGraph evalResults={evalResultsForGraphs} /> -->
+
+		<EvalSummary {evalResults} />
 	</div>
 </div>

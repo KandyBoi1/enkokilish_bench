@@ -26,6 +26,7 @@
 			seriesLayout="group"
 			grid={false}
 			rule={false}
+			tooltip={false}
 			props={{
 				bars: {
 					stroke: 'none',
@@ -52,9 +53,9 @@
 				}
 			}}
 		>
-			{#snippet tooltip()}
+			<!-- {#snippet tooltip()}
 				<Chart.Tooltip indicator="dashed" />
-			{/snippet}
+			{/snippet} -->
 		</BarChart>
 	</Chart.Container>
 </div>

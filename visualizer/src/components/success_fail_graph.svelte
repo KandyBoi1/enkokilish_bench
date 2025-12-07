@@ -52,8 +52,8 @@
 			// }
 		}}
 	>
-		{#snippet tooltip()}
+		<!-- {#snippet tooltip()}
 			<Chart.Tooltip indicator="dashed" />
-		{/snippet}
+		{/snippet} -->
 	</BarChart>
 </Chart.Container>
